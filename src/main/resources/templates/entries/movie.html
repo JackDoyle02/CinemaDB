@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8">
+    <title th:text="${movie.title}"></title>
+    <link th:href="@{/css/entries/movie.css}" rel="stylesheet" />
+    <link th:href="@{/css/fragments/navigation.css}" rel="stylesheet" />
+</head>
+
+<body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <h1 th:text="${movie.title}"></h1>
+    <p><strong>Director:</strong> <a th:href="@{|/director/${movie.director.directorId}|}" th:text="${movie.director.name}"></a></p>
+    <p><strong>Release Year:</strong> <span th:text="${movie.releaseYear}"></span></p>
+    <p><strong>Description:</strong> <span th:text="${movie.description}"></span></p>
+    <h2>Genres</h2>
+    <ul>
+        <li th:each="movieGenre : ${movie.movieGenres}">
+            <a th:href="@{|/genre/${movieGenre.genre.genreId}|}" th:text="${movieGenre.genre.name}"></a>
+        </li>
+    </ul>
+    <h2>Actors</h2>
+    <ul>
+        <li th:each="movieActor : ${movie.movieActors}">
+            <a th:href="@{|/actor/${movieActor.actor.actorId}|}" th:text="${movieActor.actor.name}"></a>
+        </li>
+    </ul>
+    <h2>Reviews</h2>
+    <ul>
+        <li th:each="review : ${movie.reviews}">
+            <h3><strong><span th:text="${review.rating}"></span>/5 - </strong> <span th:text="${review.reviewerName}"></span></h3>
+            <p>Review Date: <span th:text="${#temporals.format(review.createdAt, 'd MMM yyyy')}"></span></p>
+            <p>- <span th:text="${review.reviewText}"></span></p>
+        </li>
+    </ul>
+    <h2>Write Review</h2>
+    <form class="review-form" action="review/add" method="post">
+        <div>
+            <label for="reviewerName">Your Name:</label>
+            <input type="text" id="reviewerName" name="reviewerName" required>
+        </div>
+        <div>
+            <label for="rating">Rating:</label>
+            <select id="rating" name="rating" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div>
+            <label for="reviewText">Your Review:</label>
+            <textarea id="reviewText" name="reviewText" required></textarea>
+        </div>
+        <input type="hidden" name="movieId" th:value="${movie.movieId}">
+        <button type="submit">Submit Review</button>
+    </form>
+</body>
+</html>

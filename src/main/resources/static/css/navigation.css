@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+}
+
+.logo {
+    font-size: 24px;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+select, input, button {
+    margin-left: 5px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+.back-button {
+    margin-left: 20px;
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    background-color: #555;
+    border-radius: 5px;
+}
+
+.back-button:hover {
+    background-color: #777;
+}

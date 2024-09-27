@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8">
+    <title>Cinema DB</title>
+    <link th:href="@{/css/search/search.css}" rel="stylesheet" />
+</head>
+
+<body>
+    <h1 name="title">Cinema DB</h1>
+    <form action="/search" method="get">
+        <select name="type">
+            <option value="actor">Actor</option>
+            <option value="director">Director</option>
+            <option value="genre">Genre</option>
+            <option value="movie">Movie</option>
+        </select>
+        <input type="text" name="query" placeholder="Search..." required>
+        <button type="submit">Search</button>
+    </form>
+</body>
+</html>

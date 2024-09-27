@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8">
+    <title>Search Results</title>
+    <link th:href="@{/css/Search/search-results.css}" rel="stylesheet" />
+    <link th:href="@{/css/fragments/navigation.css}" rel="stylesheet" />
+</head>
+
+<body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <h2>Search results for: <span th:text="${query}"></span></h2>
+    <div th:if="${type == 'actor'}">
+        <h3>Actors</h3>
+        <div th:each="actor: ${actors}">
+            <div>
+                <a th:href="@{|/actor/${actor.actorId}|}" th:text="${actor.name}"></a>
+                <p th:text="'- ' + ${actor.biography}"></p>
+            </div>
+        </div>
+    </div>
+    <div th:if="${type == 'director'}">
+        <h3>Directors</h3>
+        <div th:each="director: ${directors}">
+            <div>
+                <a th:href="@{|/director/${director.directorId}|}" th:text="${director.name}"></a>
+                <p th:text="'- ' + ${director.biography}"></p>
+            </div>
+        </div>
+    </div>
+    <div th:if="${type == 'genre'}">
+        <h3>Genres</h3>
+        <div th:each="genre: ${genres}">
+            <div>
+                <a th:href="@{|/genre/${genre.genreId}|}" th:text="${genre.name}"></a>
+                <p th:text="'- ' + ${genre.description}"></p>
+            </div>
+        </div>
+    </div>
+    <div th:if="${type == 'movie'}">
+        <h3>Movies</h3>
+        <div th:each="movie: ${movies}">
+            <div>
+                <a th:href="@{|/movie/${movie.movieId}|}" th:text="${movie.title}"></a>
+                <p th:text="'- ' + ${movie.description}"></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

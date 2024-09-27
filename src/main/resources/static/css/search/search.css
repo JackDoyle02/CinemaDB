@@ -1,0 +1,25 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex; 
+    align-items: center;
+}
+
+select, input, button {
+    margin: 0 5px; 
+    padding: 10px;
+    font-size: 16px;
+}
+

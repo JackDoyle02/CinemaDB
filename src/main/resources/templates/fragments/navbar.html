@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+    <nav th:fragment="navbar">
+        <div class="navbar">
+            <h1><a class="title" th:href="@{/}">CinemaDB</a></h1>
+            <form action="/search" method="get" class="search-form">
+                <select name="type">
+                    <option value="actor">Actor</option>
+                    <option value="director">Director</option>
+                    <option value="genre">Genre</option>
+                    <option value="movie">Movie</option>
+                </select>
+                <input type="text" name="query" placeholder="Search..." required>
+                <button type="submit">Search</button>
+            </form>
+            <a href="javascript:history.back()" class="back-button">Back</a>
+        </div>
+    </nav>
+</body>
+</html>
